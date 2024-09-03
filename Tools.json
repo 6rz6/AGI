@@ -1,0 +1,76 @@
+{
+    "Tools": {
+        "search": {
+            "description": "Allows you to search in various platforms for a string and returns relevant results",
+            "use": "Search for information on a specific topic",
+            "input": {
+                "query": "Aider, aider-chat",
+                "platform": "string"
+            },
+            "output": {
+                "results": [
+                    {
+                        "title": "string",
+                        "description": "string",
+                        "url": "string",
+                        "video_links": "array of important video links"
+                    }
+                ]
+            },
+            "platforms": [
+                "google",
+                "yahoo",
+                "facebook",
+                "github",
+                "youtube",
+                "vimeo",
+                "flickr",
+                "twitter",
+                "instagram",
+                "pinterest",
+                "linkedin",
+                "stackoverflow",
+                "quora",
+                "reddit",
+                "wiki",
+                "arxiv",
+                "pdf",
+                "google_scholar",
+                "google_books",
+                "google_news",
+                "google_images",
+                "google_videos",
+                "duckduckgo"
+            ]
+        },
+        "scrape": {
+            "description": "Allows you to scrape data from various websites",
+            "use": "Scrape data from a specific website",
+            "input": {
+                "url": "string",
+                "method": "string"
+            },
+            "output": {
+                "data": "array of scraped data"
+            },
+            "methods": [
+                {
+                    "name": "yt_transcribe",
+                    "description": "Extracts the verbal content of a YouTube video by downloading and analyzing the video's transcript",
+                    "use": "Transcribe a YouTube video",
+                    "input": {
+                        "video_url": "string"
+                    },
+                    "output": {
+                        "transcript": "string"
+                    }
+                },
+                {
+                    "name": "BeautifulSoup",
+                    "description": "Scrape data using BeautifulSoup",
+                    "example": "import requests from bs4 import BeautifulSoup url = 'https://www.example.com' response = requests.get(url) soup = BeautifulSoup(response.content, 'html.parser') data = soup.find_all('div', class_='example') print(data)"
+                }
+            ]
+        }
+    }
+}
