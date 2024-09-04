@@ -1,0 +1,121 @@
+1. [Backup] Always create a backup of the MemoryDB.json file before making any changes to prevent data loss. [EX1]cp /root/MemoryDB.json /root/MemoryDB_backup.json[/EX1][/Backup]
+2. [Location] The MemoryDB.json file is located at /root/MemoryDB.json.[/Location]
+3. [Add] To add a new entry to the MemoryDB.json file, load the JSON file, append the new entry to the appropriate list, and save the file.[/Add]
+4. [Update] To update an existing entry in the MemoryDB.json file, load the JSON file, find the entry by its agent_id, modify the necessary fields, and save the file.[/Update]
+5. [Delete] To delete an entry from the MemoryDB.json file, load the JSON file, filter out the entry you want to remove, and save the updated list back to the file.[/Delete]
+6. [Query] To query the MemoryDB.json file, load the file and access the desired fields.[/Query]
+7. [Importance] Always ensure to back up the MemoryDB.json file before performing any operations to avoid accidental data loss.[/Importance]
+8. [Structure] Remember to keep the JSON structure intact when making any changes to the MemoryDB.json file.[/Structure]
+
+[jsonStructure]
+{
+    "MemoryDB": {
+        "date": "",
+        "agent_memories": [
+            {
+                "agent_id": "",
+                "thoughtsOrganization": {
+                    "1": "",
+                    "2": "",
+					"...":"..."
+                },
+                "highestPriorityThoughts": {
+                    "1": "",
+					"2": ""
+					"...":"..."
+                },
+                "task": "",
+                "actions": [
+                    {
+                        "step": 1,
+                        "action": ""
+                    },
+                    {
+                        "step": 2,
+                        "action": ""
+                    },
+                    {
+                        "step": 3,
+                        "action": ""
+                    },
+                    {
+                        "step": 4,
+                        "action": ""
+                    },
+                    {
+                        "step": 5,
+                        "action": ""
+                    },
+                    {
+                        "step": 6,
+                        "action": ""
+                    },
+                    {
+                        "step": 7,
+                        "action": ""
+                    },
+                    {
+                        "step": 8,
+                        "action": ""
+                    },
+                    {
+                        "step": 9,
+                        "action": ""
+                    }
+                ],
+                "issues_encountered": [
+                    ""
+                ],
+                "resolutions_attempted": [
+                    ""
+                ],
+                "results": [],
+                "output": []
+            },
+            {
+                "agent_id": "Agent 0",
+                "thoughtsOrganization": {
+                    "1": "User requested to add memory of the last MemoryDB.json related task.",
+                    "2": "I will fill all fields and output the MemoryDB.json for review."
+                },
+                "highestPriorityThoughts": {
+                    "1": "Ensure all fields are filled correctly.",
+					"2": "Double check every piece of data",
+					"3": "To not delete anything and perserve existing data"
+                },
+                "task": "Add memory of last MemoryDB.json related task.",
+                "actions": [
+                    {
+                        "step": 1,
+                        "action": "Load existing MemoryDB.json"
+                    },
+                    {
+                        "step": 2,
+                        "action": "Create new memory object"
+                    },
+                    {
+                        "step": 3,
+                        "action": "Add new memory object to MemoryDB"
+                    },
+                    {
+                        "step": 4,
+                        "action": "Output MemoryDB.json for review"
+                    }
+                ],
+                "issues_encountered": [
+                    "None"
+                ],
+                "resolutions_attempted": [
+                    "N/A"
+                ],
+                "results": [
+                    "MemoryDB.json updated successfully"
+                ],
+                "output": [
+                    "MemoryDB.json has been updated with the new memory object."
+                ]
+            }
+        ]
+    }
+}
+[/jsonStructure]
