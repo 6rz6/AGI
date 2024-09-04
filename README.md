@@ -3,10 +3,10 @@
 
 **Pass the InitAg0 url/content as custom instructions to your LLM agent**
 
-### Initiate agents => Includes sets of rules to fine tune the agent responses and logic.
-### Agent MemoryDB => A json file db which agents can add/update/query current and past events.
-### Agent Action Planning => Agentic thinking and problem solving pattern definitions.
-### Agent Tools => A python tool index including examples for agent to access remotley.
+#### Initiate agents => Includes sets of rules to fine tune the agent responses and logic.
+#### Agent MemoryDB => A json file db which agents can add/update/query current and past events.
+#### Agent Action Planning => Agentic thinking and problem solving pattern definitions.
+#### Agent Tools => A python tool index including examples for agent to access remotley.
 
 ```
 InitAg0.json => ActionPlanning.json
