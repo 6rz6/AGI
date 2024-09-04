@@ -1,76 +1,184 @@
 {
-    "Tools": {
-        "search": {
-            "description": "Allows you to search in various platforms for a string and returns relevant results",
-            "use": "Search for information on a specific topic",
-            "input": {
-                "query": "Aider, aider-chat",
-                "platform": "string"
-            },
-            "output": {
-                "results": [
-                    {
-                        "title": "string",
-                        "description": "string",
-                        "url": "string",
-                        "video_links": "array of important video links"
-                    }
-                ]
-            },
-            "platforms": [
-                "google",
-                "yahoo",
-                "facebook",
-                "github",
-                "youtube",
-                "vimeo",
-                "flickr",
-                "twitter",
-                "instagram",
-                "pinterest",
-                "linkedin",
-                "stackoverflow",
-                "quora",
-                "reddit",
-                "wiki",
-                "arxiv",
-                "pdf",
-                "google_scholar",
-                "google_books",
-                "google_news",
-                "google_images",
-                "google_videos",
-                "duckduckgo"
-            ]
-        },
-        "scrape": {
-            "description": "Allows you to scrape data from various websites",
-            "use": "Scrape data from a specific website",
-            "input": {
-                "url": "string",
-                "method": "string"
-            },
-            "output": {
-                "data": "array of scraped data"
-            },
-            "methods": [
-                {
-                    "name": "yt_transcribe",
-                    "description": "Extracts the verbal content of a YouTube video by downloading and analyzing the video's transcript",
-                    "use": "Transcribe a YouTube video",
-                    "input": {
-                        "video_url": "string"
-                    },
-                    "output": {
-                        "transcript": "string"
-                    }
-                },
-                {
-                    "name": "BeautifulSoup",
-                    "description": "Scrape data using BeautifulSoup",
-                    "example": "import requests from bs4 import BeautifulSoup url = 'https://www.example.com' response = requests.get(url) soup = BeautifulSoup(response.content, 'html.parser') data = soup.find_all('div', class_='example') print(data)"
-                }
-            ]
-        }
+  "ToolCategories": {
+    "Search": {
+      "DuckDuckGo": "Search the web using DuckDuckGo. Example: results = requests.get('https://duckduckgo.com/?q=latest+news').json()",
+      "GitHub Search": "Search for GitHub repositories. Example: repositories = requests.get('https://api.github.com/search/repositories?q=machine+learning').json()['items']",
+      "Serper Dev": "Search the web using Serper. Example: results = requests.get('https://api.serper.dev/search?q=latest+tech+news', headers={'Authorization': 'Bearer YOUR_API_KEY'}).json()['results']",
+      "YouTube Video Search": "Search for YouTube videos. Example: results = requests.get('https://www.googleapis.com/youtube/v3/search?part=snippet&q=educational+videos&type=video&key=YOUR_API_KEY').json()['items']",
+      "YouTube Channel Search": "Search for YouTube channels. Example: results = requests.get('https://www.googleapis.com/youtube/v3/search?part=snippet&q=tech+channels&type=channel&key=YOUR_API_KEY').json()['items']"
+    },
+    "Web Scraping": {
+      "Web Scraper": "Scrape data from websites. Example: data = BeautifulSoup(requests.get('https://example.com').content, 'html.parser').find_all('div', class_='example')",
+      "Spider Tool": "Crawl a website and extract data. Example: data = spider_tool.crawl('https://example.com')",
+      "Firecrawl": "Scrape a website using Firecrawl. Example: data = requests.post('https://api.firecrawl.ai/scrape', json={'url': 'https://example.com'}).json()['data']",
+      "Scrape Element": "Scrape a specific element from a website. Example: data = scrape_element_tool.scrape('https://example.com', 'div.content')",
+      "Website Search": "Search a website for specific keywords. Example: results = requests.post('https://api.websearch.ai/search', json={'url': 'https://example.com', 'keywords': ['AI', 'tools']}).json()['results']"
+    },
+    "Text and Document Processing": {
+      "PDF Tools": "Extract text from PDF files. Example: import PyPDF2\ntext = ''.join([PyPDF2.PdfFileReader(open('document.pdf', 'rb')).getPage(i).extractText() for i in range(PyPDF2.PdfFileReader(open('document.pdf', 'rb')).numPages)])",
+      "YouTube Transcript": "Get transcript of a YouTube video. Example: transcript = YouTubeTranscriptApi.get_transcript('VIDEO_ID_HERE')",
+      "Text Search": "Search a text file for specific keywords. Example: results = txt_search_tool.search('path/to/file.txt', ['AI', 'ML'])",
+      "PDF Search": "Search a PDF file for specific keywords. Example: results = pdf_search_tool.search('path/to/file.pdf', ['contract', 'terms'])",
+      "MDX Search": "Search an MDX file for specific keywords. Example: results = mdx_search_tool.search('path/to/file.mdx', ['sales', 'Q1'])"
+    },
+    "AI Content Generation": {
+      "Composio": "Generate text based on a prompt. Example: text = requests.post('https://api.composio.ai/generate', json={'prompt': 'Write a poem about AI'}).json()['text']",
+      "RAG Tool": "Generate text based on a prompt using RAG. Example: text = requests.post('https://api.ragtool.ai/generate', json={'prompt': 'Story about a hero'}).json()['text']",
+      "AI Image Generation": "Generate images using AI. Example: image_url = requests.post('https://api.pollinations.ai/generate', json={'prompt': 'A futuristic cityscape at sunset'}).json()['image_url']",
+      "AI Video Generation": "Generate videos using AI. Example: video_url = requests.post('https://api.kling.ai/generate-video', json={'prompt': 'A short video of a space shuttle launch'}).json()['video_url']",
+      "AI Music Generation": "Generate music using AI. Example: music_url = requests.post('https://api.railwayml.gen3/music', json={'prompt': 'A relaxing ambient track'}).json()['music_url']",
+      "AI Text-to-Speech": "Convert text to speech using AI. Example: audio_url = requests.post('https://api.texttospeech.ai/generate', json={'text': 'Hello, how are you today?'}).json()['audio_url']",
+      "AI Art Generator": "Generate artwork using AI. Example: art_url = requests.post('https://api.artgen.ai/generate', json={'prompt': 'A surreal painting of a dream'}).json()['art_url']",
+      "AI Poem Generator": "Generate poems using AI. Example: poem = requests.post('https://api.poemgen.ai/generate', json={'prompt': 'A poem about the beauty of nature'}).json()['poem']",
+      "AI Story Generator": "Generate stories using AI. Example: story = requests.post('https://api.storygen.ai/generate', json={'prompt': 'A story about a young hero in a mystical land'}).json()['story']",
+      "AI Logo Generator": "Generate logos using AI. Example: logo_url = requests.post('https://api.logogen.ai/generate', json={'prompt': 'A modern logo for a tech startup'}).json()['logo_url']",
+      "AI Meme Generator": "Generate memes using AI. Example: meme_url = requests.post('https://api.memegen.ai/generate', json={'prompt': 'When your code finally works'}).json()['meme_url']",
+      "AI Avatar Generator": "Generate avatars using AI. Example: avatar_url = requests.post('https://api.avatargen.ai/generate', json={'prompt': 'A cartoon avatar of a superhero'}).json()['avatar_url']",
+      "AI Presentation Generator": "Generate presentations using AI. Example: presentation_url = requests.post('https://api.presentationgen.ai/generate', json={'prompt': 'A presentation on the importance of cybersecurity'}).json()['presentation_url']",
+      "AI Resume Generator": "Generate resumes using AI. Example: resume_url = requests.post('https://api.resumegen.ai/generate', json={'prompt': 'A resume for a software developer with 5 years of experience'}).json()['resume_url']",
+      "AI Infographic Generator": "Generate infographics using AI. Example: infographic_url = requests.post('https://api.infographicgen.ai/generate', json={'prompt': 'An infographic showing the benefits of renewable energy'}).json()['infographic_url']"
+    },
+    "Development Tools": {
+      "Directory Reader": "Read the contents of a directory. Example: contents = os.listdir('/path/to/directory')",
+      "Conftest": "Run tests on a configuration file. Example: results = conftest.run_tests('config.yaml')",
+      "Code Interpreter": "Interpret code in a specific language. Example: output = code_interpreter_tool.interpret_code(\"print('Hello')\", 'python')",
+      "Link Shortener": "Shorten URLs using a link shortener service. Example: short_url = requests.post('https://is.gd/create.php?format=simple', data={'url': 'https://www.example.com', 'shorturl': 'mycustomalias'}).text",
+      "Example Tool": "Example tool for demonstration purposes. Example: output_data = example_tool.process_input({'key': 'value'})",
+      "Multion": "Multion tool for demonstration purposes. Example: output_data = multion_tool.process_input({'key': 'value'})"
+    },
+    "Graph and Data Visualization Tools": {
+      "Plotly": "Create interactive graphs using Plotly. Example: fig = plotly.express.line(x=[1, 2, 3], y=[4, 5, 6]); fig.show()",
+      "Matplotlib": "Create static, animated, and interactive visualizations in Python. Example: import matplotlib.pyplot as plt; plt.plot([1, 2, 3], [4, 5, 6]); plt.show()",
+      "Seaborn": "Statistical data visualization using Seaborn. Example: import seaborn as sns; sns.lineplot(x=[1, 2, 3], y=[4, 5, 6])",
+      "D3.js": "Create dynamic and interactive data visualizations in web browsers. Example: D3.select('body').append('svg')",
+      "Graphviz": "Visualize graph data structures. Example: dot_data = graphviz.Source('digraph G { A -> B; B -> C; C -> A; }'); dot_data.render('graph.png')"
+    },
+    "Cloud RPC Tools": {
+      "gRPC": "A high-performance RPC framework. Example: result = grpc_client.call('Service.Method', {'arg1': 'value'})",
+      "Thrift": "RPC framework for scalable cross-language services. Example: result = thrift_client.call('Service.Method', {'arg1': 'value'})",
+      "Apache Dubbo": "High-performance RPC framework for Java. Example: result = dubbo_client.call('Service.Method', {'arg1': 'value'})",
+      "ZeroMQ": "A high-performance asynchronous messaging library. Example: result = zmq_client.send('message')",
+      "XML-RPC": "Remote procedure call protocol encoded in XML. Example: result = xmlrpc_client.call('Service.Method', {'arg1': 'value'})"
+    },
+    "Hugging Face API Tools": {
+      "Hugging Face Transformers": "Access pre-trained models for NLP tasks. Example: from transformers import pipeline; generator = pipeline('text-generation', model='gpt-2'); text = generator('Once upon a time')",
+      "Hugging Face Datasets": "Load and preprocess datasets. Example: from datasets import load_dataset; dataset = load_dataset('imdb')",
+      "Hugging Face Tokenizers": "Fast and customizable tokenizers. Example: from tokenizers import Tokenizer; tokenizer = Tokenizer.from_pretrained('bert-base-uncased'); tokens = tokenizer.encode('Hello, world!')",
+      "Hugging Face Spaces": "Deploy and share ML models using Gradio or Streamlit. Example: space = requests.get('https://huggingface.co/spaces/your-space').json()",
+      "Hugging Face Inference API": "Use pre-trained models via API. Example: response = requests.post('https://api-inference.huggingface.co/models/gpt2', headers={'Authorization': 'Bearer YOUR_API_KEY'}, json={'inputs': 'Hello, world!'}).json()"
+    },
+    "GitHub CLI and Codespaces": {
+      "GitHub CLI": "Interact with GitHub from the command line. Example: os.system('gh repo clone owner/repo')",
+      "GitHub Codespaces": "Develop in a cloud-powered development environment. Example: os.system('code .') in a GitHub Codespace terminal",
+      "GitHub Actions": "Automate workflows on GitHub. Example: workflow = requests.post('https://api.github.com/repos/owner/repo/actions/workflows', auth=('user', 'token'), json={'name': 'CI', 'on': 'push'})",
+      "GitHub Tokens": "Manage personal access tokens. Example: token = os.getenv('GITHUB_TOKEN')",
+      "GitHub Issues": "Manage GitHub issues via CLI. Example: os.system('gh issue create --title \"New issue\" --body \"Issue body\"')"
+    },
+    "LLM Models API Tools": {
+      "OpenAI GPT": "Access OpenAI's GPT models via API. Example: response = requests.post('https://api.openai.com/v1/completions', headers={'Authorization': 'Bearer YOUR_API_KEY'}, json={'model': 'text-davinci-003', 'prompt': 'Translate English to French: Hello, world!'}).json()['choices'][0]['text']",
+      "Anthropic Claude": "Access Anthropic's Claude models via API. Example: response = requests.post('https://api.anthropic.com/v1/complete', headers={'Authorization': 'Bearer YOUR_API_KEY'}, json={'prompt': 'Tell me a joke', 'max_tokens': 50}).json()['completion']",
+      "Cohere API": "Access Cohere's NLP models via API. Example: response = requests.post('https://api.cohere.ai/generate', headers={'Authorization': 'Bearer YOUR_API_KEY'}, json={'prompt': 'Write a short story', 'model': 'large'}).json()['text']",
+      "MetaAI LLaMA": "Access MetaAI's LLaMA models via API. Example: response = requests.post('https://api.metaai.com/v1/models/llama', headers={'Authorization': 'Bearer YOUR_API_KEY'}, json={'prompt': 'Describe a llama'}).json()['response']",
+      "Google PaLM": "Access Google’s PaLM models via API. Example: response = requests.post('https://palm.googleapis.com/v1/models/text-bison:generateText', headers={'Authorization': 'Bearer YOUR_API_KEY'}, json={'prompt': {'text': 'Summarize the following text'}}).json()['generatedText']"
+    },
+    "Website Generation Tools": {
+      "AI Website Builder": "Generate websites based on prompts. Example: html = requests.post('https://api.webgen.ai/generate', json={'prompt': 'Create a landing page for a tech startup'}).json()['html']",
+      "Durable": "Create and deploy websites with AI. Example: result = requests.post('https://api.durable.co/generate', json={'prompt': 'Generate a portfolio website for a photographer'}).json()['result']",
+      "Mixo": "Generate a startup landing page in seconds. Example: html = requests.post('https://api.mixo.io/v1/generate', json={'prompt': 'Landing page for a new AI tool'}).json()['html']",
+      "Webflow AI": "Use Webflow AI to create responsive websites. Example: html = requests.post('https://api.webflow.com/ai/generate', json={'prompt': 'Build a blog template'}).json()['html']",
+      "Bookmark AiDA": "Generate a website using Bookmark's AiDA. Example: html = requests.post('https://api.bookmark.com/ai/generate', json={'prompt': 'Create a website for an online store'}).json()['html']",
+      "10Web AI": "Build WordPress sites using AI with 10Web. Example: html = requests.post('https://api.10web.io/ai/generate', json={'prompt': 'Create a WordPress blog site layout'}).json()['html']"
+    },
+    "Data and Graph Visualization": {
+      "Plotly": "Create interactive graphs using Plotly. Example: fig = plotly.express.line(x=[1, 2, 3], y=[4, 5, 6]); fig.show()",
+      "Matplotlib": "Create static, animated, and interactive visualizations in Python. Example: import matplotlib.pyplot as plt; plt.plot([1, 2, 3], [4, 5, 6]); plt.show()",
+      "Seaborn": "Statistical data visualization using Seaborn. Example: import seaborn as sns; sns.lineplot(x=[1, 2, 3], y=[4, 5, 6])",
+      "D3.js": "Create dynamic and interactive data visualizations in web browsers. Example: D3.select('body').append('svg')",
+      "Graphviz": "Visualize graph data structures. Example: dot_data = graphviz.Source('digraph G { A -> B; B -> C; C -> A; }'); dot_data.render('graph.png')"
+    },
+    "LLM Tools API": {
+      "OpenAI API": "Access OpenAI's language models, including GPT-4. Example: response = requests.post('https://api.openai.com/v1/completions', headers={'Authorization': 'Bearer YOUR_API_KEY'}, json={'model': 'text-davinci-003', 'prompt': 'Translate English to Spanish: Hello, world!'}).json()['choices'][0]['text']",
+      "Anthropic Claude API": "Use Anthropic's Claude models for natural language tasks. Example: response = requests.post('https://api.anthropic.com/v1/complete', headers={'Authorization': 'Bearer YOUR_API_KEY'}, json={'prompt': 'Explain quantum physics in simple terms'}).json()['completion']",
+      "Cohere API": "Generate text using Cohere's NLP models. Example: response = requests.post('https://api.cohere.ai/generate', headers={'Authorization': 'Bearer YOUR_API_KEY'}, json={'model': 'xlarge', 'prompt': 'Write a poem about the sea'}).json()['text']",
+      "MetaAI LLaMA API": "Access MetaAI's large language models for text generation. Example: response = requests.post('https://api.metaai.com/v1/models/llama', headers={'Authorization': 'Bearer YOUR_API_KEY'}, json={'prompt': 'Describe the benefits of AI in healthcare'}).json()['response']",
+      "Google PaLM API": "Use Google's PaLM API for text generation and more. Example: response = requests.post('https://palm.googleapis.com/v1/models/text-bison:generateText', headers={'Authorization': 'Bearer YOUR_API_KEY'}, json={'prompt': {'text': 'What are the key features of PaLM?'}}).json()['generatedText']"
+    },
+    "Additional Useful Categories": {
+      "Data Processing and Analysis": {
+        "Pandas": "Data manipulation and analysis. Example: import pandas as pd; df = pd.read_csv('data.csv'); df.head()",
+        "NumPy": "Numerical computing with Python. Example: import numpy as np; array = np.array([1, 2, 3]); array.mean()",
+        "Scikit-learn": "Machine learning in Python. Example: from sklearn.linear_model import LinearRegression; model = LinearRegression().fit(X, y); predictions = model.predict(X_new)",
+        "TensorFlow": "Open-source library for machine learning. Example: import tensorflow as tf; model = tf.keras.models.Sequential([...]); model.fit(X_train, y_train)",
+        "PyTorch": "Deep learning framework by Facebook. Example: import torch; model = torch.nn.Linear(10, 1); output = model(torch.randn(1, 10))"
+    },
+    "DevOps and CI/CD Tools": {
+        "Docker": "Containerization platform. Example: os.system('docker build -t myapp .')",
+        "Kubernetes": "Container orchestration platform. Example: os.system('kubectl apply -f deployment.yaml')",
+        "Jenkins": "Automation server for CI/CD. Example: os.system('jenkins-cli build my-job')",
+        "Terraform": "Infrastructure as code tool. Example: os.system('terraform apply')",
+        "Ansible": "Automation tool for IT tasks. Example: os.system('ansible-playbook site.yml')"
+    },
+    "APIs and Web Development": {
+        "Flask": "Micro web framework for Python. Example: from flask import Flask; app = Flask(__name__); @app.route('/'); def hello(): return 'Hello, World!'",
+        "Django": "High-level Python web framework. Example: os.system('django-admin startproject mysite')",
+        "FastAPI": "Fast web framework for building APIs with Python. Example: from fastapi import FastAPI; app = FastAPI(); @app.get('/'); def read_root(): return {'Hello': 'World'}",
+        "Express.js": "Web application framework for Node.js. Example: const express = require('express'); const app = express(); app.get('/', (req, res) => res.send('Hello World!')); app.listen(3000)",
+        "React": "JavaScript library for building user interfaces. Example: const element = <h1>Hello, world!</h1>; ReactDOM.render(element, document.getElementById('root'))"
+    },
+    "Security and Compliance": {
+        "OWASP ZAP": "Security testing tool for web applications. Example: os.system('zap-baseline.py -t https://www.example.com')",
+		"Nmap": "Network scanning tool for security auditing. Example: os.system('nmap -A example.com')",
+        "Metasploit": "Penetration testing framework. Example: os.system('msfconsole -q -x \"use exploit/windows/smb/ms17_010_eternalblue; set RHOSTS 192.168.1.10; exploit\"')",
+        "Wireshark": "Network protocol analyzer. Example: os.system('wireshark -i eth0 -k')",
+        "OpenVAS": "Open-source vulnerability scanner. Example: os.system('openvas-start; openvasmd --rebuild --progress')",
+        "Snort": "Network intrusion detection system. Example: os.system('snort -A console -i eth0 -c /etc/snort/snort.conf -l /var/log/snort')"
+    },
+    "AI and Machine Learning Platforms": {
+        "Google Cloud AI": "AI and ML services on Google Cloud. Example: from google.cloud import aiplatform; aiplatform.init(); model = aiplatform.Model('YOUR_MODEL_ID'); prediction = model.predict(instances=[[...]])",
+        "AWS SageMaker": "Fully managed service to build, train, and deploy ML models on AWS. Example: import boto3; sagemaker = boto3.client('sagemaker'); response = sagemaker.invoke_endpoint(EndpointName='YOUR_ENDPOINT', Body=b'{"instances": [...]}')",
+        "Azure Machine Learning": "Build, train, and deploy models on Azure. Example: from azureml.core import Workspace, Experiment; ws = Workspace.from_config(); experiment = Experiment(ws, 'my-experiment'); run = experiment.start_logging()",
+        "IBM Watson": "AI and ML services on IBM Cloud. Example: from ibm_watson import NaturalLanguageUnderstandingV1; from ibm_watson.natural_language_understanding_v1 import Features, EntitiesOptions; nlu = NaturalLanguageUnderstandingV1(version='2021-03-25', authenticator=authenticator); response = nlu.analyze(text='Hello, world!', features=Features(entities=EntitiesOptions())).get_result()",
+        "H2O.ai": "Open-source platform for AI, ML, and data science. Example: import h2o; h2o.init(); df = h2o.import_file('data.csv'); model = h2o.estimators.H2OGradientBoostingEstimator(); model.train(x=[...], y='target', training_frame=df)"
     }
+	"Automation and Workflow Orchestration": {
+		"Zapier": "Automate workflows by connecting different apps. Example: response = requests.post('https://hooks.zapier.com/hooks/catch/YOUR_ZAP_ID/', json={'task': 'Send email when new row is added to Google Sheets'})",
+		"IFTTT": "Create conditional workflows. Example: response = requests.post('https://maker.ifttt.com/trigger/YOUR_EVENT_NAME/with/key/YOUR_IFTTT_KEY', json={'value1': 'data1', 'value2': 'data2', 'value3': 'data3'})",
+		"n8n": "Open-source workflow automation tool. Example: response = requests.post('http://localhost:5678/webhook-test', json={'task': 'Trigger build process'})",
+		"Apache Airflow": "Programmatically author, schedule, and monitor workflows. Example: dag = DAG('example_dag', default_args=default_args, schedule_interval='@daily'); task = BashOperator(task_id='print_date', bash_command='date', dag=dag)",
+		"Microsoft Power Automate": "Automate workflows between applications and services. Example: response = requests.post('https://flow.microsoft.com/api/flow/YOUR_FLOW_ID', headers={'Authorization': 'Bearer YOUR_ACCESS_TOKEN'}, json={'input': 'Trigger condition met'})",
+		"Automate.io": "Connect your cloud applications and automate tasks. Example: response = requests.post('https://automate.io/api/webhooks/YOUR_WEBHOOK_ID', json={'task': 'Notify team on Slack when a new lead is added'})",
+		"Camunda": "Open-source platform for workflow and decision automation. Example: response = requests.post('http://localhost:8080/engine-rest/process-definition/key/YOUR_PROCESS_KEY/start', json={'variables': {'input': {'value': 'Sample data', 'type': 'String'}}})",
+		"Integromat (Make.com)": "Connect apps and automate workflows without coding. Example: response = requests.post('https://hook.integromat.com/YOUR_HOOK_ID', json={'event': 'Order received', 'order_id': 12345})",
+		"Pipedream": "Integrate apps and automate workflows using JavaScript. Example: response = requests.post('https://api.pipedream.com/v1/sources/YOUR_SOURCE_ID/events', headers={'Authorization': 'Bearer YOUR_API_KEY'}, json={'event': 'New user signup', 'user_id': 'abc123'})",
+		"AWS Step Functions": "Coordinate components of distributed applications as workflows. Example: response = requests.post('https://states.YOUR_REGION.amazonaws.com', headers={'X-Amz-Target': 'AWSStepFunctions.StartExecution', 'Content-Type': 'application/x-amz-json-1.0'}, json={'stateMachineArn': 'YOUR_STATE_MACHINE_ARN', 'input': '{"key": "value"}'})"
+	}
+	"Text-to-Voice-to-Text": {
+		"IBM Watson Text to Speech": "Convert text to speech using IBM's Watson service. Example: response = requests.post('https://api.us-south.text-to-speech.watson.cloud.ibm.com/instances/YOUR_INSTANCE_ID/v1/synthesize', headers={'Content-Type': 'application/json', 'Authorization': 'Basic YOUR_API_KEY'}, json={'text': 'Hello, world!', 'accept': 'audio/wav'})",
+		"Google Cloud Text-to-Speech": "Convert text to speech with Google's Text-to-Speech API. Example: response = requests.post('https://texttospeech.googleapis.com/v1/text:synthesize', headers={'Authorization': 'Bearer YOUR_API_KEY'}, json={'input': {'text': 'Hello, world!'}, 'voice': {'languageCode': 'en-US', 'name': 'en-US-Wavenet-D'}, 'audioConfig': {'audioEncoding': 'MP3'}})",
+		"Microsoft Azure Speech to Text": "Convert speech to text using Azure's Speech Service. Example: response = requests.post('https://YOUR_REGION.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1', headers={'Ocp-Apim-Subscription-Key': 'YOUR_API_KEY', 'Content-Type': 'audio/wav; codecs=audio/pcm; samplerate=16000'}, data=open('audio.wav', 'rb'))",
+		"AssemblyAI Speech-to-Text": "Transcribe speech to text with AssemblyAI. Example: response = requests.post('https://api.assemblyai.com/v2/transcript', headers={'authorization': 'YOUR_API_KEY'}, json={'audio_url': 'https://example.com/audio.wav'})",
+		"Amazon Polly": "Convert text to speech using Amazon Polly. Example: response = boto3.client('polly', region_name='us-west-2').synthesize_speech(OutputFormat='mp3', Text='Hello, world!', VoiceId='Joanna')"
+	}
+	"Text Generation": {
+		"Inferkit Text Generation": "Generate text based on a prompt. Example: response = requests.post('https://api.inferkit.com/v1/models/standard/generate', headers={'Authorization': 'Bearer YOUR_API_KEY'}, json={'prompt': {'text': 'Once upon a time'}, 'length': 100})",
+		"TextRazor": "Analyze and generate text with NLP capabilities. Example: response = requests.post('https://api.textrazor.com', headers={'x-textrazor-key': 'YOUR_API_KEY'}, data={'text': 'OpenAI develops artificial intelligence.'})",
+		"OpenAI API": "Generate text using OpenAI's GPT-3 models. Example: response = requests.post('https://api.openai.com/v1/completions', headers={'Authorization': 'Bearer YOUR_API_KEY'}, json={'model': 'text-davinci-003', 'prompt': 'Translate English to French: Hello, world!'}).json()['choices'][0]['text']",
+		"Cohere API": "Generate text using Cohere's large language models. Example: response = requests.post('https://api.cohere.ai/generate', headers={'Authorization': 'Bearer YOUR_API_KEY'}, json={'prompt': 'Write a short story', 'model': 'large'}).json()['text']",
+		"AI Dungeon": "Generate interactive text-based adventure stories. Example: response = requests.post('https://api.aidungeon.io/v1/quests/generate', headers={'Authorization': 'Bearer YOUR_API_KEY'}, json={'prompt': 'You are in a forest, and you see a path leading to a dark cave.'})"
+	}	 
+	"AI Vision": {
+		"Google Cloud Vision": "Detect objects, faces, and landmarks in images using Google's Vision API. Example: response = requests.post('https://vision.googleapis.com/v1/images:annotate', headers={'Authorization': 'Bearer YOUR_API_KEY'}, json={'requests': [{'image': {'source': {'imageUri': 'https://example.com/image.jpg'}}, 'features': [{'type': 'LABEL_DETECTION'}]}]}).json()",
+		"Microsoft Azure Computer Vision": "Extract information from images using Azure's Computer Vision API. Example: response = requests.post('https://YOUR_REGION.api.cognitive.microsoft.com/vision/v3.0/analyze', headers={'Ocp-Apim-Subscription-Key': 'YOUR_API_KEY', 'Content-Type': 'application/json'}, json={'url': 'https://example.com/image.jpg'}).json()",
+		"Amazon Rekognition": "Image and video analysis service from AWS. Example: response = boto3.client('rekognition').detect_labels(Image={'S3Object': {'Bucket': 'your-bucket', 'Name': 'your-image.jpg'}}, MaxLabels=10)",
+		"OpenCV": "Open-source computer vision and machine learning software library. Example: import cv2; image = cv2.imread('image.jpg'); gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY); cv2.imshow('Gray Image', gray_image)"
+	}
+	"AI Voice": {
+		"Google Speech-to-Text": "Convert spoken audio to text using Google's Speech-to-Text API. Example: response = requests.post('https://speech.googleapis.com/v1/speech:recognize', headers={'Authorization': 'Bearer YOUR_API_KEY'}, json={'config': {'encoding': 'LINEAR16', 'sampleRateHertz': 16000, 'languageCode': 'en-US'}, 'audio': {'uri': 'gs://your-bucket/audio.raw'}}).json()",
+		"Voximplant Kit": "Build voice bots and automate voice tasks. Example: response = requests.post('https://kit.voximplant.com/api/v2/scenarios', headers={'Authorization': 'Bearer YOUR_API_KEY'}, json={'script': 'say("Hello, how can I help you?")'})",
+		"Kaldi": "Open-source toolkit for speech recognition. Example: Use Kaldi's recipe scripts in the 'egs' directory to process your audio data.",
+		"Mozilla DeepSpeech": "Convert speech to text using Mozilla's DeepSpeech engine. Example: import deepspeech; model = deepspeech.Model('deepspeech-0.9.3-models.pbmm'); result = model.stt(audio_data)",
+		"Picovoice Porcupine": "Wake word detection engine. Example: import pvporcupine; porcupine = pvporcupine.create(keywords=['picovoice']); keyword_index = porcupine.process(audio_frame)"
+	  }
+	}
+  }
 }
