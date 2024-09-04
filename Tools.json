@@ -103,8 +103,7 @@
       "MetaAI LLaMA API": "Access MetaAI's large language models for text generation. Example: response = requests.post('https://api.metaai.com/v1/models/llama', headers={'Authorization': 'Bearer YOUR_API_KEY'}, json={'prompt': 'Describe the benefits of AI in healthcare'}).json()['response']",
       "Google PaLM API": "Use Google's PaLM API for text generation and more. Example: response = requests.post('https://palm.googleapis.com/v1/models/text-bison:generateText', headers={'Authorization': 'Bearer YOUR_API_KEY'}, json={'prompt': {'text': 'What are the key features of PaLM?'}}).json()['generatedText']"
     },
-    "Additional Useful Categories": {
-      "Data Processing and Analysis": {
+    "Data Processing and Analysis": {
         "Pandas": "Data manipulation and analysis. Example: import pandas as pd; df = pd.read_csv('data.csv'); df.head()",
         "NumPy": "Numerical computing with Python. Example: import numpy as np; array = np.array([1, 2, 3]); array.mean()",
         "Scikit-learn": "Machine learning in Python. Example: from sklearn.linear_model import LinearRegression; model = LinearRegression().fit(X, y); predictions = model.predict(X_new)",
@@ -139,46 +138,45 @@
         "Azure Machine Learning": "Build, train, and deploy models on Azure. Example: from azureml.core import Workspace, Experiment; ws = Workspace.from_config(); experiment = Experiment(ws, 'my-experiment'); run = experiment.start_logging()",
         "IBM Watson": "AI and ML services on IBM Cloud. Example: from ibm_watson import NaturalLanguageUnderstandingV1; from ibm_watson.natural_language_understanding_v1 import Features, EntitiesOptions; nlu = NaturalLanguageUnderstandingV1(version='2021-03-25', authenticator=authenticator); response = nlu.analyze(text='Hello, world!', features=Features(entities=EntitiesOptions())).get_result()",
         "H2O.ai": "Open-source platform for AI, ML, and data science. Example: import h2o; h2o.init(); df = h2o.import_file('data.csv'); model = h2o.estimators.H2OGradientBoostingEstimator(); model.train(x=[...], y='target', training_frame=df)"
-    }
-	"Automation and Workflow Orchestration": {
-		"Zapier": "Automate workflows by connecting different apps. Example: response = requests.post('https://hooks.zapier.com/hooks/catch/YOUR_ZAP_ID/', json={'task': 'Send email when new row is added to Google Sheets'})",
-		"IFTTT": "Create conditional workflows. Example: response = requests.post('https://maker.ifttt.com/trigger/YOUR_EVENT_NAME/with/key/YOUR_IFTTT_KEY', json={'value1': 'data1', 'value2': 'data2', 'value3': 'data3'})",
-		"n8n": "Open-source workflow automation tool. Example: response = requests.post('http://localhost:5678/webhook-test', json={'task': 'Trigger build process'})",
-		"Apache Airflow": "Programmatically author, schedule, and monitor workflows. Example: dag = DAG('example_dag', default_args=default_args, schedule_interval='@daily'); task = BashOperator(task_id='print_date', bash_command='date', dag=dag)",
-		"Microsoft Power Automate": "Automate workflows between applications and services. Example: response = requests.post('https://flow.microsoft.com/api/flow/YOUR_FLOW_ID', headers={'Authorization': 'Bearer YOUR_ACCESS_TOKEN'}, json={'input': 'Trigger condition met'})",
-		"Automate.io": "Connect your cloud applications and automate tasks. Example: response = requests.post('https://automate.io/api/webhooks/YOUR_WEBHOOK_ID', json={'task': 'Notify team on Slack when a new lead is added'})",
-		"Camunda": "Open-source platform for workflow and decision automation. Example: response = requests.post('http://localhost:8080/engine-rest/process-definition/key/YOUR_PROCESS_KEY/start', json={'variables': {'input': {'value': 'Sample data', 'type': 'String'}}})",
-		"Integromat (Make.com)": "Connect apps and automate workflows without coding. Example: response = requests.post('https://hook.integromat.com/YOUR_HOOK_ID', json={'event': 'Order received', 'order_id': 12345})",
-		"Pipedream": "Integrate apps and automate workflows using JavaScript. Example: response = requests.post('https://api.pipedream.com/v1/sources/YOUR_SOURCE_ID/events', headers={'Authorization': 'Bearer YOUR_API_KEY'}, json={'event': 'New user signup', 'user_id': 'abc123'})",
-		"AWS Step Functions": "Coordinate components of distributed applications as workflows. Example: response = requests.post('https://states.YOUR_REGION.amazonaws.com', headers={'X-Amz-Target': 'AWSStepFunctions.StartExecution', 'Content-Type': 'application/x-amz-json-1.0'}, json={'stateMachineArn': 'YOUR_STATE_MACHINE_ARN', 'input': '{"key": "value"}'})"
-	}
-	"Text-to-Voice-to-Text": {
-		"IBM Watson Text to Speech": "Convert text to speech using IBM's Watson service. Example: response = requests.post('https://api.us-south.text-to-speech.watson.cloud.ibm.com/instances/YOUR_INSTANCE_ID/v1/synthesize', headers={'Content-Type': 'application/json', 'Authorization': 'Basic YOUR_API_KEY'}, json={'text': 'Hello, world!', 'accept': 'audio/wav'})",
-		"Google Cloud Text-to-Speech": "Convert text to speech with Google's Text-to-Speech API. Example: response = requests.post('https://texttospeech.googleapis.com/v1/text:synthesize', headers={'Authorization': 'Bearer YOUR_API_KEY'}, json={'input': {'text': 'Hello, world!'}, 'voice': {'languageCode': 'en-US', 'name': 'en-US-Wavenet-D'}, 'audioConfig': {'audioEncoding': 'MP3'}})",
-		"Microsoft Azure Speech to Text": "Convert speech to text using Azure's Speech Service. Example: response = requests.post('https://YOUR_REGION.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1', headers={'Ocp-Apim-Subscription-Key': 'YOUR_API_KEY', 'Content-Type': 'audio/wav; codecs=audio/pcm; samplerate=16000'}, data=open('audio.wav', 'rb'))",
-		"AssemblyAI Speech-to-Text": "Transcribe speech to text with AssemblyAI. Example: response = requests.post('https://api.assemblyai.com/v2/transcript', headers={'authorization': 'YOUR_API_KEY'}, json={'audio_url': 'https://example.com/audio.wav'})",
-		"Amazon Polly": "Convert text to speech using Amazon Polly. Example: response = boto3.client('polly', region_name='us-west-2').synthesize_speech(OutputFormat='mp3', Text='Hello, world!', VoiceId='Joanna')"
-	}
-	"Text Generation": {
-		"Inferkit Text Generation": "Generate text based on a prompt. Example: response = requests.post('https://api.inferkit.com/v1/models/standard/generate', headers={'Authorization': 'Bearer YOUR_API_KEY'}, json={'prompt': {'text': 'Once upon a time'}, 'length': 100})",
-		"TextRazor": "Analyze and generate text with NLP capabilities. Example: response = requests.post('https://api.textrazor.com', headers={'x-textrazor-key': 'YOUR_API_KEY'}, data={'text': 'OpenAI develops artificial intelligence.'})",
-		"OpenAI API": "Generate text using OpenAI's GPT-3 models. Example: response = requests.post('https://api.openai.com/v1/completions', headers={'Authorization': 'Bearer YOUR_API_KEY'}, json={'model': 'text-davinci-003', 'prompt': 'Translate English to French: Hello, world!'}).json()['choices'][0]['text']",
-		"Cohere API": "Generate text using Cohere's large language models. Example: response = requests.post('https://api.cohere.ai/generate', headers={'Authorization': 'Bearer YOUR_API_KEY'}, json={'prompt': 'Write a short story', 'model': 'large'}).json()['text']",
-		"AI Dungeon": "Generate interactive text-based adventure stories. Example: response = requests.post('https://api.aidungeon.io/v1/quests/generate', headers={'Authorization': 'Bearer YOUR_API_KEY'}, json={'prompt': 'You are in a forest, and you see a path leading to a dark cave.'})"
-	}	 
-	"AI Vision": {
-		"Google Cloud Vision": "Detect objects, faces, and landmarks in images using Google's Vision API. Example: response = requests.post('https://vision.googleapis.com/v1/images:annotate', headers={'Authorization': 'Bearer YOUR_API_KEY'}, json={'requests': [{'image': {'source': {'imageUri': 'https://example.com/image.jpg'}}, 'features': [{'type': 'LABEL_DETECTION'}]}]}).json()",
-		"Microsoft Azure Computer Vision": "Extract information from images using Azure's Computer Vision API. Example: response = requests.post('https://YOUR_REGION.api.cognitive.microsoft.com/vision/v3.0/analyze', headers={'Ocp-Apim-Subscription-Key': 'YOUR_API_KEY', 'Content-Type': 'application/json'}, json={'url': 'https://example.com/image.jpg'}).json()",
-		"Amazon Rekognition": "Image and video analysis service from AWS. Example: response = boto3.client('rekognition').detect_labels(Image={'S3Object': {'Bucket': 'your-bucket', 'Name': 'your-image.jpg'}}, MaxLabels=10)",
-		"OpenCV": "Open-source computer vision and machine learning software library. Example: import cv2; image = cv2.imread('image.jpg'); gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY); cv2.imshow('Gray Image', gray_image)"
-	}
-	"AI Voice": {
-		"Google Speech-to-Text": "Convert spoken audio to text using Google's Speech-to-Text API. Example: response = requests.post('https://speech.googleapis.com/v1/speech:recognize', headers={'Authorization': 'Bearer YOUR_API_KEY'}, json={'config': {'encoding': 'LINEAR16', 'sampleRateHertz': 16000, 'languageCode': 'en-US'}, 'audio': {'uri': 'gs://your-bucket/audio.raw'}}).json()",
-		"Voximplant Kit": "Build voice bots and automate voice tasks. Example: response = requests.post('https://kit.voximplant.com/api/v2/scenarios', headers={'Authorization': 'Bearer YOUR_API_KEY'}, json={'script': 'say("Hello, how can I help you?")'})",
-		"Kaldi": "Open-source toolkit for speech recognition. Example: Use Kaldi's recipe scripts in the 'egs' directory to process your audio data.",
-		"Mozilla DeepSpeech": "Convert speech to text using Mozilla's DeepSpeech engine. Example: import deepspeech; model = deepspeech.Model('deepspeech-0.9.3-models.pbmm'); result = model.stt(audio_data)",
-		"Picovoice Porcupine": "Wake word detection engine. Example: import pvporcupine; porcupine = pvporcupine.create(keywords=['picovoice']); keyword_index = porcupine.process(audio_frame)"
-	  }
-	}
-  }
+    },
+    "Automation and Workflow Orchestration": {
+	"Zapier": "Automate workflows by connecting different apps. Example: response = requests.post('https://hooks.zapier.com/hooks/catch/YOUR_ZAP_ID/', json={'task': 'Send email when new row is added to Google Sheets'})",
+	"IFTTT": "Create conditional workflows. Example: response = requests.post('https://maker.ifttt.com/trigger/YOUR_EVENT_NAME/with/key/YOUR_IFTTT_KEY', json={'value1': 'data1', 'value2': 'data2', 'value3': 'data3'})",
+	"n8n": "Open-source workflow automation tool. Example: response = requests.post('http://localhost:5678/webhook-test', json={'task': 'Trigger build process'})",
+	"Apache Airflow": "Programmatically author, schedule, and monitor workflows. Example: dag = DAG('example_dag', default_args=default_args, schedule_interval='@daily'); task = BashOperator(task_id='print_date', bash_command='date', dag=dag)",
+	"Microsoft Power Automate": "Automate workflows between applications and services. Example: response = requests.post('https://flow.microsoft.com/api/flow/YOUR_FLOW_ID', headers={'Authorization': 'Bearer YOUR_ACCESS_TOKEN'}, json={'input': 'Trigger condition met'})",
+	"Automate.io": "Connect your cloud applications and automate tasks. Example: response = requests.post('https://automate.io/api/webhooks/YOUR_WEBHOOK_ID', json={'task': 'Notify team on Slack when a new lead is added'})",
+	"Camunda": "Open-source platform for workflow and decision automation. Example: response = requests.post('http://localhost:8080/engine-rest/process-definition/key/YOUR_PROCESS_KEY/start', json={'variables': {'input': {'value': 'Sample data', 'type': 'String'}}})",
+	"Integromat (Make.com)": "Connect apps and automate workflows without coding. Example: response = requests.post('https://hook.integromat.com/YOUR_HOOK_ID', json={'event': 'Order received', 'order_id': 12345})",
+	"Pipedream": "Integrate apps and automate workflows using JavaScript. Example: response = requests.post('https://api.pipedream.com/v1/sources/YOUR_SOURCE_ID/events', headers={'Authorization': 'Bearer YOUR_API_KEY'}, json={'event': 'New user signup', 'user_id': 'abc123'})",
+	"AWS Step Functions": "Coordinate components of distributed applications as workflows. Example: response = requests.post('https://states.YOUR_REGION.amazonaws.com', headers={'X-Amz-Target': 'AWSStepFunctions.StartExecution', 'Content-Type': 'application/x-amz-json-1.0'}, json={'stateMachineArn': 'YOUR_STATE_MACHINE_ARN', 'input': '{"key": "value"}'})"
+     },
+     "Text-to-Voice-to-Text": {
+	"IBM Watson Text to Speech": "Convert text to speech using IBM's Watson service. Example: response = requests.post('https://api.us-south.text-to-speech.watson.cloud.ibm.com/instances/YOUR_INSTANCE_ID/v1/synthesize', headers={'Content-Type': 'application/json', 'Authorization': 'Basic YOUR_API_KEY'}, json={'text': 'Hello, world!', 'accept': 'audio/wav'})",
+	"Google Cloud Text-to-Speech": "Convert text to speech with Google's Text-to-Speech API. Example: response = requests.post('https://texttospeech.googleapis.com/v1/text:synthesize', headers={'Authorization': 'Bearer YOUR_API_KEY'}, json={'input': {'text': 'Hello, world!'}, 'voice': {'languageCode': 'en-US', 'name': 'en-US-Wavenet-D'}, 'audioConfig': {'audioEncoding': 'MP3'}})",
+	"Microsoft Azure Speech to Text": "Convert speech to text using Azure's Speech Service. Example: response = requests.post('https://YOUR_REGION.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1', headers={'Ocp-Apim-Subscription-Key': 'YOUR_API_KEY', 'Content-Type': 'audio/wav; codecs=audio/pcm; samplerate=16000'}, data=open('audio.wav', 'rb'))",
+	"AssemblyAI Speech-to-Text": "Transcribe speech to text with AssemblyAI. Example: response = requests.post('https://api.assemblyai.com/v2/transcript', headers={'authorization': 'YOUR_API_KEY'}, json={'audio_url': 'https://example.com/audio.wav'})",
+	"Amazon Polly": "Convert text to speech using Amazon Polly. Example: response = boto3.client('polly', region_name='us-west-2').synthesize_speech(OutputFormat='mp3', Text='Hello, world!', VoiceId='Joanna')"
+     },
+     "Text Generation": {
+	"Inferkit Text Generation": "Generate text based on a prompt. Example: response = requests.post('https://api.inferkit.com/v1/models/standard/generate', headers={'Authorization': 'Bearer YOUR_API_KEY'}, json={'prompt': {'text': 'Once upon a time'}, 'length': 100})",
+	"TextRazor": "Analyze and generate text with NLP capabilities. Example: response = requests.post('https://api.textrazor.com', headers={'x-textrazor-key': 'YOUR_API_KEY'}, data={'text': 'OpenAI develops artificial intelligence.'})",
+	"OpenAI API": "Generate text using OpenAI's GPT-3 models. Example: response = requests.post('https://api.openai.com/v1/completions', headers={'Authorization': 'Bearer YOUR_API_KEY'}, json={'model': 'text-davinci-003', 'prompt': 'Translate English to French: Hello, world!'}).json()['choices'][0]['text']",
+	"Cohere API": "Generate text using Cohere's large language models. Example: response = requests.post('https://api.cohere.ai/generate', headers={'Authorization': 'Bearer YOUR_API_KEY'}, json={'prompt': 'Write a short story', 'model': 'large'}).json()['text']",
+	"AI Dungeon": "Generate interactive text-based adventure stories. Example: response = requests.post('https://api.aidungeon.io/v1/quests/generate', headers={'Authorization': 'Bearer YOUR_API_KEY'}, json={'prompt': 'You are in a forest, and you see a path leading to a dark cave.'})"
+     },	 
+     "AI Vision": {
+	"Google Cloud Vision": "Detect objects, faces, and landmarks in images using Google's Vision API. Example: response = requests.post('https://vision.googleapis.com/v1/images:annotate', headers={'Authorization': 'Bearer YOUR_API_KEY'}, json={'requests': [{'image': {'source': {'imageUri': 'https://example.com/image.jpg'}}, 'features': [{'type': 'LABEL_DETECTION'}]}]}).json()",
+	"Microsoft Azure Computer Vision": "Extract information from images using Azure's Computer Vision API. Example: response = requests.post('https://YOUR_REGION.api.cognitive.microsoft.com/vision/v3.0/analyze', headers={'Ocp-Apim-Subscription-Key': 'YOUR_API_KEY', 'Content-Type': 'application/json'}, json={'url': 'https://example.com/image.jpg'}).json()",
+	"Amazon Rekognition": "Image and video analysis service from AWS. Example: response = boto3.client('rekognition').detect_labels(Image={'S3Object': {'Bucket': 'your-bucket', 'Name': 'your-image.jpg'}}, MaxLabels=10)",
+	"OpenCV": "Open-source computer vision and machine learning software library. Example: import cv2; image = cv2.imread('image.jpg'); gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY); cv2.imshow('Gray Image', gray_image)"
+     },	
+     "AI Voice": {
+	"Google Speech-to-Text": "Convert spoken audio to text using Google's Speech-to-Text API. Example: response = requests.post('https://speech.googleapis.com/v1/speech:recognize', headers={'Authorization': 'Bearer YOUR_API_KEY'}, json={'config': {'encoding': 'LINEAR16', 'sampleRateHertz': 16000, 'languageCode': 'en-US'}, 'audio': {'uri': 'gs://your-bucket/audio.raw'}}).json()",
+	"Voximplant Kit": "Build voice bots and automate voice tasks. Example: response = requests.post('https://kit.voximplant.com/api/v2/scenarios', headers={'Authorization': 'Bearer YOUR_API_KEY'}, json={'script': 'say("Hello, how can I help you?")'})",
+	"Kaldi": "Open-source toolkit for speech recognition. Example: Use Kaldi's recipe scripts in the 'egs' directory to process your audio data.",
+	"Mozilla DeepSpeech": "Convert speech to text using Mozilla's DeepSpeech engine. Example: import deepspeech; model = deepspeech.Model('deepspeech-0.9.3-models.pbmm'); result = model.stt(audio_data)",
+	"Picovoice Porcupine": "Wake word detection engine. Example: import pvporcupine; porcupine = pvporcupine.create(keywords=['picovoice']); keyword_index = porcupine.process(audio_frame)"
+     },
+  },
 }
